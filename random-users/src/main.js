@@ -1,24 +1,60 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const container = document.querySelector("div");
 
-setupCounter(document.querySelector('#counter'))
+const card = document.createElement("div");
+card.className= "card";
+const img = document.createElement("img");
+img.src = "public/user_nt_found.jpg";
+card.appendChild(img);
+container.appendChild(card);
+
+const namespan = document.createElement("span");
+const strong1 = document.createElement("strong");
+card.appendChild(namespan);
+strong1.textContent="Name:";
+namespan.appendChild(strong1);
+namespan.append(" name surname");
+
+
+const mailspan = document.createElement("span");
+const strong2 = document.createElement("strong");
+card.appendChild(mailspan);
+strong2.textContent="Mail:";
+mailspan.appendChild(strong2);
+mailspan.append(" mail");
+
+const phonespan = document.createElement("span");
+const strong3 = document.createElement("strong");
+card.appendChild(phonespan);
+strong3.textContent="Phone:";
+phonespan.appendChild(strong3);
+phonespan.append(" phone");
+
+
+const locationspan = document.createElement("span");
+const strong4 = document.createElement("strong");
+card.appendChild(locationspan);
+strong4.textContent="Name:";
+locationspan.appendChild(strong4);
+locationspan.append(" city");
+
+const timespan = document.createElement("span");
+const strong5 = document.createElement("strong");
+card.appendChild(timespan);
+strong5.textContent="Current Time:";
+timespan.appendChild(strong5);
+timespan.append(" time");
+
+const button = document.createElement("button");
+button.textContent = "GENERATE USER";
+container.appendChild(button);
+
+const fetchperson = async (info) => {
+  const response = await fetch(`${URL_USERS}${info}`, options);
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  return response.json();
+};
